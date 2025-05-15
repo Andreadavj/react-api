@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
-import Home from "../pages/Home"
-import Pizza from "../pages/Pizza"
-import Cart from "../pages/Cart"
+import Home from "../components/Home"
+import Pizza from "../components/Pizza"
+import Cart from "../components/Cart"
 
 const AppRouter = () => {
   return (

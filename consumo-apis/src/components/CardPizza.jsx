@@ -1,4 +1,4 @@
-const PizzaCard = ({ pizza }) => {
+const CardPizza = ({ pizza }) => {
   return (
     <div className="col">
       <div className="card h-100">
@@ -17,7 +17,9 @@ const PizzaCard = ({ pizza }) => {
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-          <h4 className="text-center text-success mt-3">${pizza.price.toLocaleString("es-CL")}</h4>
+          <h4 className="text-center text-success mt-3">
+            ${pizza.price.toLocaleString("es-CL")}
+          </h4>
           <div className="d-flex justify-content-between mt-3">
             <button className="btn btn-info text-white">Ver más 👀</button>
             <button className="btn btn-danger">Añadir 🛒</button>
@@ -25,8 +27,7 @@ const PizzaCard = ({ pizza }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PizzaCard
- 
+export default CardPizza;

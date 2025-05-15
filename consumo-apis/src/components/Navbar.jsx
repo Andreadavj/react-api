@@ -51,7 +51,8 @@ const Navbar = ({ total }) => {
           </div>
           <div className="navbar-nav ms-auto">
             <a className="nav-link btn btn-outline-success" href="#">
-              🛒 Total: ${total.toLocaleString()}
+              🛒 Total: ${(total ?? 0).toLocaleString("es-CL")}
+
             </a>
           </div>
         </div>

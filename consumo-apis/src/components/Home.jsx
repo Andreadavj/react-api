@@ -1,33 +1,31 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import PizzaCard from "./CardPizza"
+import { useState, useEffect } from "react";
+import CardPizza from "./CardPizza";
 
 const Home = () => {
-  const [pizzas, setPizzas] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [pizzas, setPizzas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPizzas = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/pizzas")
+        const response = await fetch("/api/pizzas"); // ✅ usa el proxy
 
         if (!response.ok) {
-          throw new Error("Error al cargar las pizzas")
+          throw new Error("Error al cargar las pizzas");
         }
 
-        const data = await response.json()
-        setPizzas(data)
-        setLoading(false)
+        const data = await response.json();
+        setPizzas(data);
       } catch (error) {
-        setError(error.message)
-        setLoading(false)
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
-    }
+    };
 
-    fetchPizzas()
-  }, [])
+    fetchPizzas();
+  }, []);
 
   if (loading) {
     return (
@@ -36,7 +34,7 @@ const Home = () => {
           <span className="visually-hidden">Cargando...</span>
         </div>
       </div>
-    )
+    );
   }
 
   if (error) {
@@ -44,7 +42,7 @@ const Home = () => {
       <div className="container mt-5">
         <div className="alert alert-danger">{error}</div>
       </div>
-    )
+    );
   }
 
   return (
@@ -52,11 +50,11 @@ const Home = () => {
       <h1 className="text-center mb-4">Pizzería Mamma Mía</h1>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {pizzas.map((pizza) => (
-          <PizzaCard key={pizza.id} pizza={pizza} />
+          <CardPizza key={pizza.id} pizza={pizza} />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
