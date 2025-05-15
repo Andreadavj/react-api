@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import PizzaCard from "./PizzaCard"
+import PizzaCard from "./CardPizza"
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([])
